@@ -1,0 +1,15 @@
+#include <tchar.h>
+#include <conio.h>
+
+void _tmain(int argc, TCHAR *argv[])
+{
+	STARTUPINFO si;
+	PROCESS_INFORMATION pi;
+
+	// Wait until child process exits.
+	WaitForSingleObject(pi.hProcess, INFINITE);
+	DWORD dwExitCode;	
+	CloseHandle(pi.hProcess);
+	CloseHandle(pi.hThread);
+	printf("Process exit code:  (%d).\n", GetExitCodeProcess(pi.hProcess, &dwExitCode));
+}
